@@ -51,6 +51,9 @@ export default {
           "5": "hsl(var(--chart-5))",
         },
       },
+      container: {
+        center: true,
+      },
     },
   },
   // eslint-disable-next-line @typescript-eslint/no-require-imports
