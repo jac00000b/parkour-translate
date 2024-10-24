@@ -3,6 +3,7 @@ import { Label } from "./components/ui/label";
 import { Textarea } from "./components/ui/textarea";
 import { Button } from "./components/ui/button";
 import { ArrowLeftRight } from "lucide-react";
+import { toast } from "sonner";
 
 export default function App() {
   const [isSwitched, setIsSwitched] = useState(false);
@@ -64,7 +65,15 @@ export default function App() {
 
         <div className="flex flex-col gap-2 w-full">
           <Label htmlFor="to">{isSwitched ? "Text" : "Parkour"}</Label>
-          <Textarea id="to" disabled className="h-32" value={to} />
+          <Textarea
+            id="to"
+            className="h-32 cursor-not-allowed opacity-50 focus-visible:ring-0"
+            value={to}
+            onClick={() => {
+              navigator.clipboard.writeText(to);
+              toast.success("Copied to clipboard");
+            }}
+          />
         </div>
       </div>
     </main>
