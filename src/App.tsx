@@ -44,38 +44,55 @@ export default function App() {
   }, [from, isSwitched]);
 
   return (
-    <main className="container lg:p-16 p-8 min-h-screen">
-      <h1 className="text-4xl font-bold">Parkour Translate</h1>
-      <div className="flex lg:flex-row flex-col lg:gap-2 gap-4 my-4">
-        <div className="flex flex-col gap-2 w-full">
-          <Label htmlFor="from">{isSwitched ? "Parkour" : "Text"}</Label>
-          <Textarea
-            id="from"
-            className="h-32"
-            value={from}
-            onChange={(e) => setFrom(e.target.value)}
-          />
-        </div>
+    <>
+      <main className="container lg:p-16 p-8">
+        <h1 className="text-4xl font-bold">Parkour Translate</h1>
+        <div className="flex lg:flex-row flex-col lg:gap-2 gap-4 my-4">
+          <div className="flex flex-col gap-2 w-full">
+            <Label htmlFor="from">{isSwitched ? "Parkour" : "Text"}</Label>
+            <Textarea
+              id="from"
+              className="h-32"
+              value={from}
+              onChange={(e) => setFrom(e.target.value)}
+            />
+          </div>
 
-        <div className="flex justify-center items-center">
-          <Button onClick={handleSwitch} className="lg:p-3">
-            <ArrowLeftRight />
-          </Button>
-        </div>
+          <div className="flex justify-center items-center">
+            <Button onClick={handleSwitch} className="lg:p-3">
+              <ArrowLeftRight />
+            </Button>
+          </div>
 
-        <div className="flex flex-col gap-2 w-full">
-          <Label htmlFor="to">{isSwitched ? "Text" : "Parkour"}</Label>
-          <Textarea
-            id="to"
-            className="h-32 cursor-not-allowed opacity-50 focus-visible:ring-0"
-            value={to}
-            onClick={() => {
-              navigator.clipboard.writeText(to);
-              toast.success("Copied to clipboard");
-            }}
-          />
+          <div className="flex flex-col gap-2 w-full">
+            <Label htmlFor="to">{isSwitched ? "Text" : "Parkour"}</Label>
+            <Textarea
+              id="to"
+              className="h-32 cursor-not-allowed opacity-50 focus-visible:ring-0"
+              value={to}
+              onClick={() => {
+                navigator.clipboard.writeText(to);
+                toast.success("Copied to clipboard");
+              }}
+            />
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+      <footer className="text-center bg-muted fixed bottom-0 w-full p-3.5">
+        Inspired by{" "}
+        <a
+          href="https://youtu.be/DIzzMDDncnE?t=1520"
+          className="underline"
+          target="_blank"
+        >
+          Parkour Civilization
+        </a>
+        . Made with ❤️ by{" "}
+        <a href="https://github.com/jac00000b" className="underline">
+          jac00000b
+        </a>
+        .
+      </footer>
+    </>
   );
 }
